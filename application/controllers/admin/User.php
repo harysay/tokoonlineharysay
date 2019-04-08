@@ -46,10 +46,15 @@ class User extends CI_Controller {
 		//Masuk database
 		}else{
 			$i = $this->input;
+			$password    = md5($i->post('password',TRUE));
+			$options     = array("cost" => 12, "salt" => md5(rand()));
+			//$create_pass = password_hash($password, PASSWORD_BCRYPT, $options);
 			$data = array(	'nama'			=> $i->post('namapengguna'), //namapengguna harus sama dengan name= di view nya
 							'email'			=> $i->post('email'),
 							'username'		=> $i->post('username'),
-							'password'		=> $i->post('password'),
+							'password'		=> sha1($i->post('password')),//$create_pass,
+							'salt'			=> $options['salt'],
+							'kuncen'		=> $i->post('password'),
 							'akses_level'	=> $i->post('akses_level'),);
 			$this->user_model->tambah($data); //memanggil method tambah di User_model.php
 			$this->session->flashdata('sukses','Data telah ditambah');
@@ -85,7 +90,7 @@ class User extends CI_Controller {
 							'nama'			=> $i->post('nama'),
 							'email'			=> $i->post('email'),
 							'username'		=> $i->post('username'),
-							'password'		=> $i->post('password'),
+							'password'		=> SHA1($i->post('password')),
 							'akses_level'	=> $i->post('akses_level'),);
 			$this->user_model->edit($data); //memanggil method edit di User_model.php
 			$this->session->flashdata('sukses','Data telah diedit');
