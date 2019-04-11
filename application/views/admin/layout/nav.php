@@ -9,7 +9,20 @@
 
         <!-- MENU DASHBOARD -->
         <li><a href="<?php echo base_url('admin/dashboard') ?>"><i class="fa fa-dashboard text-aqua"></i> <span>DASHBOARD</span></a></li>
-
+        <!-- MENU PRODUK -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-sitemap"></i> <span>PRODUK</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url('admin/produk') ?>"><i class="fa fa-table"></i> Data Produk</a></li>
+            <li><a href="<?php echo base_url('admin/produk/tambah') ?>"><i class="fa fa-plus"></i> Tambah Produk</a></li>
+            <li><a href="<?php echo base_url('admin/kategori') ?>"><i class="fa fa-tags"></i> Kategori Produk</a></li>
+          </ul>
+        </li>
         <!-- MENU USER -->
         <li class="treeview">
           <a href="#">

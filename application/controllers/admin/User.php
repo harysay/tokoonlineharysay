@@ -8,6 +8,8 @@ class User extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('user_model');
+		//Proteksi halaman admin dengan fungsi cek_login yang ada di Simple_login
+		$this->simple_login->cek_login();
 	}
 	public function index()
 	{
@@ -55,7 +57,7 @@ class User extends CI_Controller {
 							'password'		=> sha1($i->post('password')),//$create_pass,
 							'salt'			=> $options['salt'],
 							'kuncen'		=> $i->post('password'),
-							'akses_level'	=> $i->post('akses_level'),);
+							'akses_level'	=> $i->post('akses_level'));
 			$this->user_model->tambah($data); //memanggil method tambah di User_model.php
 			$this->session->flashdata('sukses','Data telah ditambah');
 			redirect(base_url('admin/user'),'refresh');
@@ -91,7 +93,7 @@ class User extends CI_Controller {
 							'email'			=> $i->post('email'),
 							'username'		=> $i->post('username'),
 							'password'		=> SHA1($i->post('password')),
-							'akses_level'	=> $i->post('akses_level'),);
+							'akses_level'	=> $i->post('akses_level'));
 			$this->user_model->edit($data); //memanggil method edit di User_model.php
 			$this->session->flashdata('sukses','Data telah diedit');
 			redirect(base_url('admin/user'),'refresh');
