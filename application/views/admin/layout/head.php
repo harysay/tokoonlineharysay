@@ -30,6 +30,10 @@
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-<script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/BEAF0921-A2D5-4B4F-8189-525A350906C7/main.js" charset="UTF-8"></script></head>
+  <!-- ckeditor       -->
+<script type="text/javascript" src="<?php echo base_url() ?>assets/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/ckeditor/samples/js/sample.js"></script>
+<script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/BEAF0921-A2D5-4B4F-8189-525A350906C7/main.js" charset="UTF-8"></script>
+</head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">

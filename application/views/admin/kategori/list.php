@@ -26,7 +26,7 @@ if($this->session->flashdata('sukses')){
 		<?php $no=1; foreach($kategori as $kategori) { ?>
 		<tr>
 			<td><?php echo $no ?></td>
-			<td><?php echo $kategori->nama_kategori ?></td>
+			<td><?php echo $kategori->nama_kategori ?></td> <!-- nama_kategori harus sama dengan nama field di database -->
 			<td><?php echo $kategori->slug_kategori ?></td>
 			<td><?php echo $kategori->urutan ?></td>
 			<td> 

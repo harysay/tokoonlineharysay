@@ -39,7 +39,6 @@ echo form_open(base_url('admin/user/tambah'),' class="form-horizontal"');
     	<option value="Admin">Admin</option>
     	<option value="Pelanggan">Pelanggan</option>
     	<option value="Pembali">Pembeli</option>
-    	option
     </select>
   </div>
 </div>
