@@ -15,7 +15,7 @@ echo form_open_multipart(base_url('admin/produk/tambah'),' class="form-horizonta
 <div class="form-group">
   <label for="inputnamaproduk" class="col-md-2 control-label">Nama Produk</label>
   <div class="col-md-5">
-    <input type="text" name="nama_produk" class="form-control" id="inputnamaproduk" placeholder="Nama Produk" value="<?php echo set_value('nama') ?>" required>
+    <input type="text" name="nama_produk" class="form-control" id="inputnamaproduk" placeholder="Nama Produk" value="<?php echo set_value('nama_produk') ?>" required>
   </div>
 </div>
 <div class="form-group">
@@ -67,7 +67,7 @@ echo form_open_multipart(base_url('admin/produk/tambah'),' class="form-horizonta
 </div>
 
 <div class="form-group">
-  <label for="inputukuran" class="col-md-2 control-label">Keterangan Produk</label>
+  <label class="col-md-2 control-label">Keterangan Produk</label>
   <div class="col-md-10">
     <textarea name="keterangan" class="form-control" placeholder="Keterangan" id="editor"><?php echo set_value('keterangan')?></textarea>
   </div>
