@@ -1,48 +1,104 @@
 <?php
+//error upload
+if(isset($error)){
+  echo '<p class="alert alert-warning">';
+  echo $error;
+  echo '</p>';
+}
+
 //notifikasi error
 echo validation_errors('<div class="alert alert-warning">','</div>');
 
 //form open
-echo form_open(base_url('admin/produk/edit/'.$produk->id_produk),' class="form-horizontal"');
+echo form_open_multipart(base_url('admin/produk/edit/'.$produk->id_produk),' class="form-horizontal"'); //form_open_multipart untuk membuat form yang di dalamnya ada fungsi upload gambar
 ?>
 
 <div class="form-group">
-  <label for="inputEmail3" class="col-md-2 control-label">Nama Pengguna</label>
+  <label for="inputnamaproduk" class="col-md-2 control-label">Nama Produk</label>
+  <div class="col-md-5">
+    <input type="text" name="nama_produk" class="form-control" id="inputnamaproduk" placeholder="Nama Produk" value="<?php echo $produk->nama_produk ?>" required>
+  </div>
+</div>
 
+<div class="form-group">
+  <label for="inputkodeproduk" class="col-md-2 control-label">Kode Produk</label>
   <div class="col-md-5">
-    <input type="text" name="nama" class="form-control" id="inputEmail3" placeholder="Nama Pengguna" value="<?php echo $produk->nama ?>" required>
+    <input type="text" name="kode_produk" class="form-control" id="inputkodeproduk" placeholder="Kode Produk" value="<?php echo $produk->kode_produk ?>" required>
   </div>
 </div>
 <div class="form-group">
-  <label for="inputEmail3" class="col-md-2 control-label">Email</label>
-
+  <label for="inputPassword" class="col-md-2 control-label">Kategori Produk</label>
   <div class="col-md-5">
-    <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Alamat Email" value="<?php echo $produk->email ?>" required>
-  </div>
-</div>
-<div class="form-group">
-  <label for="inputProdukname" class="col-md-2 control-label">Produkname</label>
-  <div class="col-md-5">
-    <input type="text" name="produkname" class="form-control" id="inputProdukname" placeholder="Produkname" value="<?php echo $produk->produkname ?>" readonly>
-  </div>
-</div>
-<div class="form-group">
-  <label for="inputPassword" class="col-md-2 control-label">Password</label>
-  <div class="col-md-5">
-    <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" value="<?php echo $produk->password ?>" required>
-  </div>
-</div>
-<div class="form-group">
-  <label for="inputPassword" class="col-md-2 control-label">Level Hak Akses</label>
-  <div class="col-md-5">
-    <select name="akses_level" class="form-control">
-    	<option value="Admin">Admin</option>
-    	<option value="Pelanggan"<?php if($produk->akses_level=="Pelanggan"){echo "selected";}?>>Pelanggan</option>
-    	<option value="Pembali" <?php if($produk->akses_level=="Pembeli"){echo "selected";}?>>Pembeli</option>
-    	option
+    <select name="id_kategori" class="form-control">
+      <?php foreach ($kategori as $kategori) { ?>
+        <option value="<?php echo $kategori->id_kategori ?>" <?php if($produk->id_kategori==$kategori->id_kategori){echo "selected";}?>>
+          <?php echo $kategori->nama_kategori ?>
+        </option>
+      <?php } ?>
     </select>
   </div>
 </div>
+
+<div class="form-group">
+  <label for="inputharga" class="col-md-2 control-label">Harga Produk</label>
+  <div class="col-md-5">
+    <input type="number" name="harga" class="form-control" id="inputharga" placeholder="Harga Produk" value="<?php echo $produk->harga ?>" required>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="inputstok" class="col-md-2 control-label">Stok Produk</label>
+  <div class="col-md-5">
+    <input type="number" name="stok" class="form-control" id="inputstok" placeholder="Stok Produk" value="<?php echo $produk->stok ?>" required>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="inputberat" class="col-md-2 control-label">Berat Produk</label>
+
+  <div class="col-md-5">
+    <input type="text" name="berat" class="form-control" id="inputberat" placeholder="Berat Produk" value="<?php echo $produk->berat ?>" required>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="inputukuran" class="col-md-2 control-label">Ukuran Produk</label>
+  <div class="col-md-5">
+    <input type="text" name="ukuran" class="form-control" id="inputukuran" placeholder="Ukuran Produk" value="<?php echo $produk->ukuran ?>" required>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-2 control-label">Keterangan Produk</label>
+  <div class="col-md-10">
+    <textarea name="keterangan" class="form-control" placeholder="Keterangan" id="editor"><?php echo $produk->keterangan ?></textarea>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="inputkeywords" class="col-md-2 control-label">Keyword (untuk SEO Google)</label>
+  <div class="col-md-10">
+    <textarea name="keywords" class="form-control" placeholder="Keywords"><?php echo $produk->keywords ?></textarea>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="inputkeywords" class="col-md-2 control-label">Upload Gambar</label>
+  <div class="col-md-10">
+    <input type="file" name="gambar" class="form-control">
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="inputkeywords" class="col-md-2 control-label">Status Produk</label>
+  <div class="col-md-10">
+    <select name="status_produk" class="form-control">
+      <option value="Publish">Publikasikan</option>
+      <option value="Draft" <?php if($produk->status_produk=="Draft"){echo "selected";}?>>Simpan Sebagai Draft</option>
+    </select>
+  </div>
+</div>
+
 <div class="form-group">
   <label class="col-md-2 control-label"></label>
   <div class="col-md-5">

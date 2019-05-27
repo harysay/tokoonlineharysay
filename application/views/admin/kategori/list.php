@@ -34,6 +34,6 @@ if($this->session->flashdata('sukses')){
 				<a href="<?php echo base_url('admin/kategori/delete/'.$kategori->id_kategori) ?>" class="btn btn-danger btn-xs" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="fa fa-trash-o"></i> Hapus</a>
 			</td>
 		</tr>
-	<?php } ?>
+	<?php $no++; } ?>
 	</tbody>
 </table>
